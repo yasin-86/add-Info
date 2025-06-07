@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+@font-face {
+    font-family: medium;
+    src: url(/fonts/IRANSansX-Medium.woff2);
+}
+body {
+    font-family: medium;
+    direction: rtl;
+    background-color: #f4f4f4;
+}
+table {
+    width: 65%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    left: -180px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+th {
+    background-color: #343a40;
+    font-weight: bold;
+    color: #f4f4f4;
+}
+
+td {
+    background-color: #fff;
+    color: #343a40;
+}
+
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+
+
+#signupForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 350px;
+    text-align: right;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+}
+#signupForm input[type="text"],
+#signupForm input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+#signupForm input[type="text"]:focus,
+#signupForm input[type="number"]:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#signupForm input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-family: inherit;
+    transition: background-color 0.2s ease;
+}
+
+#signupForm input[type="submit"]:hover {
+    background-color: #0056b3;
+}
