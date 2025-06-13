@@ -9,6 +9,7 @@
     font-family: medium;
     src: url(/fonts/IRANSansX-Medium.woff2);
 }
+
 body {
     font-family: medium;
     direction: rtl;
@@ -47,7 +48,9 @@ td {
 tr:hover {
     background-color: #e0e0e0;
 }
-
+.bg-color{
+    background-color: rgb(105, 6, 6);
+}
 
 #signupForm {
     background-color: #fff;
@@ -81,7 +84,7 @@ tr:hover {
 }
 
 #signupForm input[type="submit"] {
-    background-color: #007bff;
+    background-color: #00c58d;
     color: #fff;
     padding: 14px 20px;
     border: none;
@@ -94,5 +97,6 @@ tr:hover {
 }
 
 #signupForm input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #009eb3;
 }
+
