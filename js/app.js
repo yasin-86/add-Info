@@ -1,10 +1,12 @@
 const signupForm = document.querySelector("#signupForm");
 const studentList = [];
+const allStudents = [];
 const tableBody = document.querySelector("#tableBody");
 const studentNameInput = document.querySelector("#studentName");
 const studentLastnameInput = document.querySelector("#studentLastname");
 const fatherNameInput = document.querySelector("#fatherName");
 const gradeInput = document.querySelector("#grade");
+const searchBox = document.querySelector(".searchBox");
 
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -17,6 +19,7 @@ signupForm.addEventListener("submit", (e) => {
     id: generateUniqueId(),
   };
 
+  
   if (
     newStudent.studentName === "" ||
     newStudent.studentLastname === "" ||
@@ -35,11 +38,12 @@ signupForm.addEventListener("submit", (e) => {
   e.target.grade.value = "";
 
   studentList.push(newStudent);
-  renderInUI(studentList, tableBody);
+  allStudents.push(newStudent);
+  renderInUI(allStudents, tableBody);
 });
 
 function renderInUI(list, container) {
-  container.innerHTML = "";
+  container.innerHTML = " ";
   list.forEach((value) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -79,12 +83,17 @@ tableBody.addEventListener("click", (e) => {
 
     console.log(clickedId);
 
-    const newArray = studentList.filter((student) => student.id !== clickedId);
+    const newStudentList = studentList.filter((student) => student.id !== clickedId);
+    const newAllStudents = allStudents.filter((student) => student.id !== clickedId);
 
+ 
     studentList.length = 0;
-    studentList.push(...newArray);
+    studentList.push(...newStudentList);
 
-    renderInUI(studentList, tableBody);
+    allStudents.length = 0;
+    allStudents.push(...newAllStudents);
+
+    renderInUI(allStudents, tableBody);
   }
 });
 
@@ -95,3 +104,23 @@ function generateUniqueId() {
     return v.toString(16);
   });
 }
+
+searchBox.addEventListener("input", (e) => {
+  const Result = e.target.value.toLowerCase();
+
+  if (Result === "") {
+    renderInUI(allStudents, tableBody);
+    return; 
+  }
+
+  const filteredStudents = studentList.filter((user) =>
+    user.studentName.toLowerCase().includes(Result) ||
+    user.studentLastname.toLowerCase().includes(Result)
+  );
+
+  renderInUI(filteredStudents, tableBody);
+});
+
+
+renderInUI(allStudents, tableBody);
+

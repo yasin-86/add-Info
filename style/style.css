@@ -100,3 +100,36 @@ tr:hover {
     background-color: #009eb3;
 }
 
+.search-container {
+  position: relative;
+    right: 30%;
+    top: 10px;
+  width: 250px;
+}
+
+.searchBox {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.searchBox:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 8px rgba(0,123,255,0.5);
+}
+
+.search-container i {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #888;
+  cursor: pointer;
+}
+
+
