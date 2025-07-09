@@ -1,6 +1,5 @@
 const signupForm = document.querySelector("#signupForm");
-const studentList = [];
-const allStudents = [];
+const studentList = JSON.parse(localStorage.getItem("students")) || [];
 const tableBody = document.querySelector("#tableBody");
 const studentNameInput = document.querySelector("#studentName");
 const studentLastnameInput = document.querySelector("#studentLastname");
@@ -38,8 +37,10 @@ signupForm.addEventListener("submit", (e) => {
   e.target.grade.value = "";
 
   studentList.push(newStudent);
-  allStudents.push(newStudent);
-  renderInUI(allStudents, tableBody);
+
+  localStorage.setItem("students" , JSON.stringify(studentList) );
+
+  renderInUI(studentList, tableBody);
 });
 
 function renderInUI(list, container) {
@@ -84,16 +85,12 @@ tableBody.addEventListener("click", (e) => {
     console.log(clickedId);
 
     const newStudentList = studentList.filter((student) => student.id !== clickedId);
-    const newAllStudents = allStudents.filter((student) => student.id !== clickedId);
-
  
     studentList.length = 0;
     studentList.push(...newStudentList);
+    localStorage.setItem("students" , JSON.stringify(studentList) );
 
-    allStudents.length = 0;
-    allStudents.push(...newAllStudents);
-
-    renderInUI(allStudents, tableBody);
+    renderInUI(studentList, tableBody);
   }
 });
 
@@ -106,21 +103,18 @@ function generateUniqueId() {
 }
 
 searchBox.addEventListener("input", (e) => {
-  const Result = e.target.value.toLowerCase();
+  const KeyWord = e.target.value;
 
-  if (Result === "") {
-    renderInUI(allStudents, tableBody);
-    return; 
-  }
-
-  const filteredStudents = studentList.filter((user) =>
-    user.studentName.toLowerCase().includes(Result) ||
-    user.studentLastname.toLowerCase().includes(Result)
+  const finalResult = studentList.filter(
+    (user) =>
+      user.studentName.includes(KeyWord) ||
+      user.studentLastname.includes(KeyWord)
   );
 
-  renderInUI(filteredStudents, tableBody);
+  renderInUI(finalResult, tableBody);
 });
 
+renderInUI(studentList, tableBody);
 
-renderInUI(allStudents, tableBody);
+
 
